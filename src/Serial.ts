@@ -45,7 +45,6 @@ export class Serial {
   writer?: WritableStreamDefaultWriter
 
   async close() {
-    console.log('closing')
     if (this.reader) {
       const reader = this.reader
       this.reader = undefined
@@ -64,7 +63,6 @@ export class Serial {
       this.port = undefined
       await port.close()
     }
-    console.log('closed')
   }
   async connectWithPaired(options: SerialOptions) {
     const [port] = await navigator.serial.getPorts()
