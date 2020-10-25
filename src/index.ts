@@ -1,6 +1,6 @@
 import serial from './Serial'
 import async from 'async'
-import intel_hex from 'intel-hex'
+import * as intel_hex from 'intel-hex'
 import Stk500 from 'stk500'
 
 type Board = {
@@ -59,10 +59,12 @@ export async function upload(
 
     const stk500 = new Stk500()
     let sent = 0
+    let total = hex.length / board.pageSize
+    if (verify) total *= 2
     stk500.log = (what: string) => {
-      if (what === 'loaded page') {
+      if (what === 'page done' || what === 'verify done') {
         sent += 1
-        const percent = Math.round((100 * sent) / (hex.length / board.pageSize))
+        const percent = Math.round((100 * sent) / total)
         onProgress(percent)
       }
     }

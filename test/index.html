@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="../dist/test.js"></script>
+    <script src="./main.js"></script>
   </head>
   <body>
-    <button arduino-uploader hex-href="./src.ino.hex" board="lgt8f328p" verify>
-      Upload test <span class="upload-progress"></span>
+    <h1>
+      <a href="https://github.com/dbuezas/arduino-web-uploader">https://github.com/dbuezas/arduino-web-uploader</a>
+    </h1>
+    <button arduino-uploader hex-href="./Blink.ino.lgt8f328p.hex" board="lgt8f328p" verify>
+      Upload Blink to lgt8f328p <span class="upload-progress"></span>
+    </button>
+    <button arduino-uploader hex-href="./Blink.ino.uno.hex" board="nano" verify>
+      Upload Blink to nano/uno/pro/pro-mini <span class="upload-progress"></span>
+    </button>
+    <button arduino-uploader hex-href="./Blink.ino.uno.hex" board="nanoOldBootloader" verify>
+      Upload Blink to nano with old bootloader (most chinese clones) <span class="upload-progress"></span>
     </button>
   </body>
 </html>
->
