@@ -43,7 +43,7 @@ for example:
 </button>
 ```
 
-see more examples in https://github.com/dbuezas/arduino-web-uploader/blob/main/test/index.html
+see more examples in https://github.com/dbuezas/arduino-web-uploader/blob/master/index.html
 
 ## Generating hex files
 
