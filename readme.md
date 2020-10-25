@@ -1,7 +1,7 @@
 # arduino-web-uploader
 
 Try it now without having to install anything at [https://dbuezas.github.io/arduino-web-uploader/](https://dbuezas.github.io/arduino-web-uploader/)
-
+(Chrome only, any pc OS. Android not yet supported)
 Currently supports
 
 - lgt8f328p (see https://github.com/dbuezas/lgt8fx)
