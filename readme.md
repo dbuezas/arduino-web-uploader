@@ -4,7 +4,7 @@ Try it now without having to install anything at [https://dbuezas.github.io/ardu
 
 Currently supports
 
-- lgt328p (see https://github.com/dbuezas/lgt8fx)
+- lgt8f328p (see https://github.com/dbuezas/lgt8fx)
 - uno
 - nano
 - nano with old bootloader (most chinese clones)
@@ -34,17 +34,17 @@ And add some buttons with their corresponding attributes
 </button>
 ```
 
-Where:
+### Where:
 
-#### [arduino-uploader]
+#### [`arduino-uploader`]
 
 indicates to the library that it should attach the functionality to this button
 
-#### [hex-href]
+#### [`hex-href`]
 
 is the url of the hex file to upload. Let me know in the issues if you have a use case to let the user select a hex file from their own computer.
 
-#### [board]
+#### [`board`]
 
 can be any of these:
 
@@ -54,17 +54,17 @@ can be any of these:
 - `"uno"`
 - `"proMini"`
 
-#### [verify]
+#### [`verify`]
 
 Is optional, so you can chose to leave that attribute out or write it there. In my experience, uploads never get corrupted and removing verification makes it twice as fast.
 
 (here are the definitions: https://github.com/dbuezas/arduino-web-uploader/blob/master/src/index.ts#L13-L44. You can see that nano, uno and proMini have the same parameters.)
 
-#### <span class="upload-progress"></span>
+#### `<span class="upload-progress"></span>`
 
-Is a placeholder to show progress
+Is a placeholder element where progress percentage will be shown
 
-#### for example:
+### for example:
 
 ```html
 <button arduino-uploader hex-href="./blinker.nano.hex" board="pro-mini">
