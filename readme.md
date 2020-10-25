@@ -12,10 +12,10 @@ Currently supports
 
 ## Activating Web Serial API
 
-Until the Web Serial API is released officially, you have to options to enable it:
+Until the Web Serial API is released officially, you have two options to enable it:
 
-- As a user: enable Experimental Web Platform Features in your browser chrome://flags/#enable-experimental-web-platform-features
-- As the owner of the webpage, you can get an API token from google (takes 5 minutes) so your users don't need to fiddle with flags. Learn more at https://web.dev/serial/#use
+1 _As a user_ enable Experimental Web Platform Features in your browser chrome://flags/#enable-experimental-web-platform-features
+2 _As the owner of the webpage_ you can get an API token from google (takes 5 minutes) so your users don't need to fiddle with flags. Learn more at https://web.dev/serial/#use
 
 ## Import directly into HTML
 
