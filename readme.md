@@ -83,6 +83,10 @@ document.addEventListener('button', async () => {
 - `src/test.ts`: a wrapper of the lib to use in HTML without writing javascript (for lazy people like https://github.com/seisfeld :D)
 - `test/*`: some test html file. The file `src/test.ts` is also bundled there by webpack
 
+## download stats
+
+https://somsubhra.com/github-release-stats/?username=dbuezas&repository=arduino-web-uploader
+
 ## gh-pages
 
 It looks like gihub pages lags by one commit.
