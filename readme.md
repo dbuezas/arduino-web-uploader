@@ -34,7 +34,37 @@ And add some buttons with their corresponding attributes
 </button>
 ```
 
-for example:
+Where:
+
+#### [arduino-uploader]
+
+indicates to the library that it should attach the functionality to this button
+
+#### [hex-href]
+
+is the url of the hex file to upload. Let me know in the issues if you have a use case to let the user select a hex file from their own computer.
+
+#### [board]
+
+can be any of these:
+
+- `"lgt8f328p"`
+- `"nanoOldBootloader"`
+- `"nano"`
+- `"uno"`
+- `"proMini"`
+
+#### [verify]
+
+Is optional, so you can chose to leave that attribute out or write it there. In my experience, uploads never get corrupted and removing verification makes it twice as fast.
+
+(here are the definitions: https://github.com/dbuezas/arduino-web-uploader/blob/master/src/index.ts#L13-L44. You can see that nano, uno and proMini have the same parameters.)
+
+#### <span class="upload-progress"></span>
+
+Is a placeholder to show progress
+
+#### for example:
 
 ```html
 <button arduino-uploader hex-href="./blinker.nano.hex" board="pro-mini">
@@ -74,6 +104,8 @@ document.addEventListener('button', async () => {
   console.log('done!')
 })
 ```
+
+also check the code of the stand alone html plugin: https://github.com/dbuezas/arduino-web-uploader/blob/master/src/test.ts
 
 ## Structure
 
