@@ -1,8 +1,10 @@
 # arduino-web-uploader
+Upload compiled hex files to your boards directly from a webpage.
 
 Try it now without having to install anything at [https://dbuezas.github.io/arduino-web-uploader/](https://dbuezas.github.io/arduino-web-uploader/)
-(Chrome only, any pc OS. Android not yet supported)
-Currently supports
+(Chrome only, any pc OS. Android, not yet)
+
+Currently supports these boards:
 
 - lgt8f328p (see https://github.com/dbuezas/lgt8fx)
 - uno
