@@ -82,6 +82,10 @@ document.addEventListener('button', () => {
 - `src/test.ts`: a wrapper of the lib to use in HTML without writing javascript (for lazy people like https://github.com/seisfeld :D)
 - `test/*`: some test html file. The file `src/test.ts` is also bundled there by webpack
 
+## gh-pages
+
+It looks like gihub pages lags by one commit.
+
 ## LICENSE
 
 MIT License
