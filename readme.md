@@ -44,12 +44,11 @@ for example:
 ```
 
 see more examples in https://github.com/dbuezas/arduino-web-uploader/blob/main/test/index.html
-try it now in [github pages comming soon]
 
 ## Generating hex files
 
-<img src="./docs/export-hex.png" alt="Export the hex file" width="300"/>
-<img src="./docs/open-folder.png" alt="Open the folder where it was stored" width="300"/>
+<img src="./docs/export-hex.png" alt="Export the hex file" width="500"/>
+<img src="./docs/open-folder.png" alt="Open the folder where it was stored" width="500"/>
 
 use the hex WITHOUT the bootloader.
 
