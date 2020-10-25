@@ -64,12 +64,14 @@ usage:
 
 ```js
 import { upload, boards } from 'arduino-web-uploader'
-document.addEventListener('button', () => {
+document.addEventListener('button', async () => {
   const onProgress = (percentage) => {
-    console.log(percentage)
+    console.log(percentage + '%')
   }
   const verify = false
-  upload(boards.nanoOldBootloader, 'http://your-site.com/hex-file.hex', onProgress, verify)
+  console.log('starting')
+  await upload(boards.nanoOldBootloader, 'http://your-site.com/hex-file.hex', onProgress, verify)
+  console.log('done!')
 })
 ```
 
