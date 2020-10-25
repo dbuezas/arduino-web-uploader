@@ -22,7 +22,7 @@ Until the Web Serial API is released officially, you have two options to enable 
 Just add the following to the head of your HTML:
 
 ```html
-<script src="https://github.com/dbuezas/arduino-web-uploader/releases/download/v1.0.0/arduino-web-uploader.js"></script>
+<script src="https://github.com/dbuezas/arduino-web-uploader/releases/download/v1.0.0/main.js"></script>
 ```
 
 And add some buttons with their corresponding attributes
