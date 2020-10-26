@@ -17,7 +17,9 @@ Currently supports these boards:
 Until the Web Serial API is released officially, you have two options to enable it:
 
 1. **As a user** enable Experimental Web Platform Features in your browser chrome://flags/#enable-experimental-web-platform-features
-2. **As the owner of the webpage** you can get an API token from google (takes 5 minutes) so your users don't need to fiddle with flags. Learn more at https://web.dev/serial/#use
+2. **As the owner of the webpage** you can get an API token from google (free and takes 5 minutes) so your users don't need to fiddle with flags. Learn more at https://web.dev/serial/#use
+  - You can see the API token in the "origin-trial" meta tag here: https://github.com/dbuezas/arduino-web-uploader/blob/master/index.html
+  - API tokens are scoped to domains, so you'll need to get your own token for your own domain.
 
 ## Import directly into HTML
 
@@ -56,11 +58,11 @@ can be any of these:
 - `"uno"`
 - `"proMini"`
 
+(here are the definitions: https://github.com/dbuezas/arduino-web-uploader/blob/master/src/index.ts#L13-L44. You can see that nano, uno and proMini have the same parameters.)
+
 #### [`verify`]
 
 Is optional, so you can chose to leave that attribute out or write it there. In my experience, uploads never get corrupted and removing verification makes it twice as fast.
-
-(here are the definitions: https://github.com/dbuezas/arduino-web-uploader/blob/master/src/index.ts#L13-L44. You can see that nano, uno and proMini have the same parameters.)
 
 #### `<span class="upload-progress"></span>`
 
