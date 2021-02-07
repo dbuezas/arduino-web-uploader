@@ -121,7 +121,7 @@ also check the code of the stand alone html plugin: https://github.com/dbuezas/a
 
 ## download stats
 
-https://somsubhra.com/github-release-stats/?username=dbuezas&repository=arduino-web-uploader
+https://tooomm.github.io/github-release-stats/?username=dbuezas&repository=arduino-web-uploader
 
 ## gh-pages
 
