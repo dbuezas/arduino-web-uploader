@@ -1,5 +1,5 @@
 # arduino-web-uploader
-Upload compiled hex files to your boards directly from a webpage.
+Upload compiled hex files to your boards directly from a webpage. (Chrome only)
 
 Try it now without having to install anything at [https://dbuezas.github.io/arduino-web-uploader/](https://dbuezas.github.io/arduino-web-uploader/)
 (Chrome only, any pc OS. Android, not yet)
@@ -12,14 +12,17 @@ Currently supports these boards:
 - nano with old bootloader (most chinese clones)
 - pro mini
 
-## Activating Web Serial API
 
-Until the Web Serial API is released officially, you have two options to enable it:
+## ~~Activating Web Serial API
 
-1. **As a user** enable Experimental Web Platform Features in your browser chrome://flags/#enable-experimental-web-platform-features
+~~Until the Web Serial API is released officially, you have two options to enable it:
+
+~~1. **As a user** enable Experimental Web Platform Features in your browser chrome://flags/#enable-experimental-web-platform-features
 2. **As the owner of the webpage** you can get an API token from google (free and takes 5 minutes) so your users don't need to fiddle with flags. Learn more at https://web.dev/serial/#use
-  - You can see the API token in the "origin-trial" meta tag here: https://github.com/dbuezas/arduino-web-uploader/blob/master/index.html
+~~- You can see the API token in the "origin-trial" meta tag here: https://github.com/dbuezas/arduino-web-uploader/blob/master/index.html
   - API tokens are scoped to domains, so you'll need to get your own token for your own domain.
+
+## The Web Serial API is available on all desktop platforms (Chrome OS, Linux, macOS, and Windows) in Chrome 89.
 
 ## Import directly into HTML
 
