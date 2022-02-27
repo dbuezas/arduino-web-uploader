@@ -10,7 +10,7 @@
     "url": "https://github.com/dbuezas/arduino-web-uploader/"
   },
   "scripts": {
-    "prepublish": "yarn build",
+    "prepublish": "npm run build",
     "build": "tsc && webpack"
   },
   "devDependencies": {
@@ -30,6 +30,6 @@
     "async": "^3.2.0",
     "intel-hex": "^0.1.2",
     "readable-web-to-node-stream": "^2.0.0",
-    "stk500": "^2.0.2"
+    "stk500": "github:dbuezas/js-stk500v1"
   }
 }

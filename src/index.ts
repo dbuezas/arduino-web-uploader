@@ -9,8 +9,13 @@ type Board = {
   timeout: number
   baudRate: number
 }
-
 export const boards = {
+  avr4809: {
+    signature: Buffer.from([0x1e, 0x96, 0x51]),
+    pageSize: 128,
+    timeout: 400,
+    baudRate: 115200,
+  } as Board,
   lgt8f328p: {
     signature: Buffer.from([0x1e, 0x95, 0x0f]),
     pageSize: 128,
@@ -44,6 +49,9 @@ export const boards = {
 }
 
 const noop = (callback: () => void) => callback()
+
+
+
 export async function upload(
   board: Board,
   hexFileHref: string,
@@ -51,9 +59,12 @@ export async function upload(
   verify = false,
 ) {
   try {
-    const hex = await fetch(hexFileHref)
+    const text = await fetch(hexFileHref)
       .then((response) => response.text())
-      .then((text) => intel_hex.parse(text).data)
+    const parsed = intel_hex.parse(text)
+    const hex = parsed.data
+    let { startSegmentAddress } = parsed;
+    startSegmentAddress ||= startSegmentAddress;
     const serialStream = await serial.connect({ baudRate: board.baudRate })
     onProgress(0)
 
@@ -67,6 +78,7 @@ export async function upload(
         const percent = Math.round((100 * sent) / total)
         onProgress(percent)
       }
+      console.log(what, sent, total, hex.length, board.pageSize)
     }
 
     await async.series([
@@ -77,8 +89,8 @@ export async function upload(
       stk500.verifySignature.bind(stk500, serialStream, board.signature, board.timeout),
       stk500.setOptions.bind(stk500, serialStream, {}, board.timeout),
       stk500.enterProgrammingMode.bind(stk500, serialStream, board.timeout),
-      stk500.upload.bind(stk500, serialStream, hex, board.pageSize, board.timeout),
-      !verify ? noop : stk500.verify.bind(stk500, serialStream, hex, board.pageSize, board.timeout),
+      stk500.upload.bind(stk500, serialStream, hex, board.pageSize, board.timeout, startSegmentAddress),
+      !verify ? noop : stk500.verify.bind(stk500, serialStream, hex, board.pageSize, board.timeout, startSegmentAddress),
       stk500.exitProgrammingMode.bind(stk500, serialStream, board.timeout),
     ])
   } finally {
