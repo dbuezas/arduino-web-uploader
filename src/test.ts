@@ -1,4 +1,5 @@
 import { upload, boards } from './'
+import { PortFilters } from './Serial'
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[arduino-uploader]').forEach((el) => {
@@ -11,8 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const onProgress = (progress: number) => {
         progressEl.innerHTML = `${progress}%`
       }
+      let portFilters = {} as PortFilters
       try {
-        await upload(boards[board], hexHref, onProgress, verify)
+        portFilters = { filters: JSON.parse(el.getAttribute('port-filters')) || [] }
+      } catch (e) {}
+      try {
+        await upload(boards[board], hexHref, onProgress, verify, portFilters)
       } catch (e) {
         progressEl.innerHTML = 'Error!'
         alert(e)

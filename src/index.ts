@@ -1,4 +1,4 @@
-import serial from './Serial'
+import serial, { PortFilters } from './Serial'
 import async from 'async'
 import * as intel_hex from 'intel-hex'
 import Stk500 from 'stk500'
@@ -57,6 +57,7 @@ export async function upload(
   hexFileHref: string,
   onProgress: (percentage: number) => void,
   verify = false,
+  portFilters: PortFilters = {},
 ) {
   try {
     const text = await fetch(hexFileHref)
@@ -65,7 +66,7 @@ export async function upload(
     const hex = parsed.data
     let { startSegmentAddress } = parsed;
     startSegmentAddress ||= startSegmentAddress;
-    const serialStream = await serial.connect({ baudRate: board.baudRate })
+    const serialStream = await serial.connect({ baudRate: board.baudRate }, portFilters)
     onProgress(0)
 
     const stk500 = new Stk500()

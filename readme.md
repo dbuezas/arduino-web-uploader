@@ -6,6 +6,7 @@ Try it now without having to install anything at [https://dbuezas.github.io/ardu
 
 Currently supports these boards:
 
+- avr4809
 - lgt8f328p (see https://github.com/dbuezas/lgt8fx)
 - uno
 - nano
@@ -25,8 +26,14 @@ Just add the following to the head of your HTML:
 And add some buttons with their corresponding attributes
 
 ```html
-<button arduino-uploader hex-href="[path to your hex file]" board="[name of the board]" verify [optional]>
-  Upload blinker to lgt8f328p and verify uploaded code
+<button
+  arduino-uploader
+  hex-href="[path to your hex file]"
+  board="[name of the board]"
+  [optional]verify
+  [optional]port-filters='[{"usbProductId":46388,"usbVendorId":1241}]'
+>
+  > Upload blinker to lgt8f328p and verify uploaded code
   <span class="upload-progress"></span>
 </button>
 ```
@@ -55,7 +62,19 @@ can be any of these:
 
 #### [`verify`]
 
-Is optional, so you can chose to leave that attribute out or write it there. In my experience, uploads never get corrupted and removing verification makes it twice as fast.
+Is **optional**, so you can chose to leave that attribute out or write it there. In my experience, uploads never get corrupted and removing verification makes it twice as fast.
+
+(here are the definitions: https://github.com/dbuezas/arduino-web-uploader/blob/master/src/index.ts#L13-L44. You can see that nano, uno and proMini have the same parameters.)
+
+#### [`port-filters`]
+
+**Optional**, used to limit the devices shown in the connection popup.
+To find out the IDs of a device, enter this in the browser console
+
+```js
+port = await navigator.serial.requestPort({})
+console.log(JSON.stringify([port.getInfo()]))
+```
 
 #### `<span class="upload-progress"></span>`
 
@@ -95,9 +114,10 @@ document.addEventListener('button', async () => {
   const onProgress = (percentage) => {
     console.log(percentage + '%')
   }
-  const verify = false
+  const verify = false // optional
+  const portFilters = {} // optional, e.g. [{"usbProductId":46388,"usbVendorId":1241}]
   console.log('starting')
-  await upload(boards.nanoOldBootloader, 'http://your-site.com/hex-file.hex', onProgress, verify)
+  await upload(boards.nanoOldBootloader, 'http://your-site.com/hex-file.hex', onProgress, verify, portFilters)
   console.log('done!')
 })
 ```

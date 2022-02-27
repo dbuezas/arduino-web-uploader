@@ -6,8 +6,9 @@ export type Port = {
   close: () => Promise<void>
   getInfo: () => { usbProductId: number; usbVendorId: number }
 }
+export type PortFilters = { filters?: { usbVendorId: number; usbProductId: number }[] }
 export type NavigatorSerial = {
-  requestPort: (optn: unknown) => Port
+  requestPort: (optns: PortFilters) => Port
   getPorts: () => Promise<Port[]>
 }
 export type SerialOptions = {
@@ -69,8 +70,8 @@ export class Serial {
     if (!port) throw new Error('no paired')
     return this._connect(options, port)
   }
-  async connect(options: SerialOptions) {
-    const port = await navigator.serial.requestPort({})
+  async connect(options: SerialOptions, portFilters: PortFilters = {}) {
+    const port = await navigator.serial.requestPort(portFilters)
     return this._connect(options, port)
   }
   async _connect(options: SerialOptions, port: Port) {

@@ -16,6 +16,10 @@
   <button arduino-uploader hex-href="./test/Blink.ino.lgt8f328p.hex" board="lgt8f328p" verify>
     Upload Blink to lgt8f328p [<span class="upload-progress"></span>]
   </button>
+  <button arduino-uploader hex-href="./test/Blink.ino.lgt8f328p.hex" board="lgt8f328p"
+    port-filters='[{"usbProductId":46388,"usbVendorId":1241}]'>
+    lgt8f328p filtered to {' usbProductId':46388,'usbVendorId':1241} [<span class="upload-progress"></span>]
+  </button>
   <button arduino-uploader hex-href="./test/Blink.ino.uno.hex" board="nano" verify>
     Upload Blink to nano/uno/pro/pro-mini [<span class="upload-progress"></span>]
   </button>
