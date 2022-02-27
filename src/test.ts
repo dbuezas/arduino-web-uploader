@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let portFilters = {} as PortFilters
       try {
         portFilters = { filters: JSON.parse(el.getAttribute('port-filters')) || [] }
-      } catch (e) {}
+      } catch (e) { }
       try {
         await upload(boards[board], hexHref, onProgress, verify, portFilters)
       } catch (e) {

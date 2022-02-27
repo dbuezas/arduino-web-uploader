@@ -1,6 +1,6 @@
 {
   "name": "web-arduino-uploader",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -30,6 +30,6 @@
     "async": "^3.2.0",
     "intel-hex": "^0.1.2",
     "readable-web-to-node-stream": "^2.0.0",
-    "stk500": "github:dbuezas/js-stk500v1"
+    "stk500": "github:dbuezas/js-stk500v1#v3.0.0"
   }
 }

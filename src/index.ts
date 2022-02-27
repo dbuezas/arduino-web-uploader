@@ -2,12 +2,14 @@ import serial, { PortFilters } from './Serial'
 import async from 'async'
 import * as intel_hex from 'intel-hex'
 import Stk500 from 'stk500'
+import { version } from '../package.json'
 
 type Board = {
   signature: Buffer
   pageSize: number
   timeout: number
   baudRate: number
+  use_8_bit_addresseses?: boolean
 }
 export const boards = {
   avr4809: {
@@ -15,6 +17,7 @@ export const boards = {
     pageSize: 128,
     timeout: 400,
     baudRate: 115200,
+    use_8_bit_addresseses: true,
   } as Board,
   lgt8f328p: {
     signature: Buffer.from([0x1e, 0x95, 0x0f]),
@@ -60,12 +63,11 @@ export async function upload(
   portFilters: PortFilters = {},
 ) {
   try {
+    console.log("Arduino Web Uploader Version:", version)
     const text = await fetch(hexFileHref)
       .then((response) => response.text())
-    const parsed = intel_hex.parse(text)
-    const hex = parsed.data
-    let { startSegmentAddress } = parsed;
-    startSegmentAddress ||= startSegmentAddress;
+    let { data: hex } = intel_hex.parse(text)
+
     const serialStream = await serial.connect({ baudRate: board.baudRate }, portFilters)
     onProgress(0)
 
@@ -90,8 +92,8 @@ export async function upload(
       stk500.verifySignature.bind(stk500, serialStream, board.signature, board.timeout),
       stk500.setOptions.bind(stk500, serialStream, {}, board.timeout),
       stk500.enterProgrammingMode.bind(stk500, serialStream, board.timeout),
-      stk500.upload.bind(stk500, serialStream, hex, board.pageSize, board.timeout, startSegmentAddress),
-      !verify ? noop : stk500.verify.bind(stk500, serialStream, hex, board.pageSize, board.timeout, startSegmentAddress),
+      stk500.upload.bind(stk500, serialStream, hex, board.pageSize, board.timeout, board.use_8_bit_addresseses),
+      !verify ? noop : stk500.verify.bind(stk500, serialStream, hex, board.pageSize, board.timeout, board.use_8_bit_addresseses),
       stk500.exitProgrammingMode.bind(stk500, serialStream, board.timeout),
     ])
   } finally {
