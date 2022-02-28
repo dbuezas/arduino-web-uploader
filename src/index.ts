@@ -2,7 +2,7 @@ import serial, { PortFilters } from './Serial'
 import async from 'async'
 import * as intel_hex from 'intel-hex'
 import Stk500 from 'stk500'
-import { version } from '../package.json'
+const { version } = require('../package.json')
 
 type Board = {
   signature: Buffer
@@ -53,8 +53,7 @@ export const boards = {
 
 const noop = (callback: () => void) => callback()
 
-
-
+console.log("Arduino Web Uploader Version:", version)
 export async function upload(
   board: Board,
   hexFileHref: string,
@@ -63,7 +62,6 @@ export async function upload(
   portFilters: PortFilters = {},
 ) {
   try {
-    console.log("Arduino Web Uploader Version:", version)
     const text = await fetch(hexFileHref)
       .then((response) => response.text())
     let { data: hex } = intel_hex.parse(text)
