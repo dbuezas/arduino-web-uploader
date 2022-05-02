@@ -49,6 +49,12 @@ export const boards = {
     timeout: 400,
     baudRate: 115200,
   } as Board,
+   328PBminiCore: {
+    signature: Buffer.from([0x1e, 0x95, 0x16]),
+    pageSize: 128,
+    timeout: 400,
+    baudRate: 115200,
+  } as Board,
 }
 
 const noop = (callback: () => void) => callback()
