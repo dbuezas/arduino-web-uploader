@@ -109,7 +109,7 @@ or
 usage:
 
 ```js
-import { upload, boards } from 'arduino-web-uploader'
+import { upload, boards } from 'web-arduino-uploader'
 document.addEventListener('button', async () => {
   const onProgress = (percentage) => {
     console.log(percentage + '%')
