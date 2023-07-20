@@ -8,7 +8,7 @@ Currently supports these boards:
 
 - avr4809
 - lgt8f328p (see https://github.com/dbuezas/lgt8fx)
-- uno
+- uno (atmega328p)
 - nano
 - nano with old bootloader (most chinese clones)
 - pro mini
